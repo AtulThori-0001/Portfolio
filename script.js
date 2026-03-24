@@ -1,5 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // 0. Initialize Particles.js Live Background
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#3b82f6" },
+                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
+                "opacity": { "value": 0.3, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#8b5cf6", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } }
+            },
+            "retina_detect": true
+        });
+    }
+
     // 1. Navigation Scrolled State & Mobile Menu
     const navbar = document.querySelector('.navbar');
     const menuBtn = document.querySelector('.menu-btn');
@@ -33,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Active Nav Link on Scroll
     const sections = document.querySelectorAll('section');
-    
+
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
@@ -57,10 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let i = 0;
     let timer;
     const typingText = document.querySelector('.typing-text');
-    
+
     function typingEffect() {
         let word = words[i].split("");
-        var loopTyping = function() {
+        var loopTyping = function () {
             if (word.length > 0) {
                 typingText.innerHTML += word.shift();
             } else {
@@ -74,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function deletingEffect() {
         let word = words[i].split("");
-        var loopDeleting = function() {
+        var loopDeleting = function () {
             if (word.length > 0) {
                 word.pop();
                 typingText.innerHTML = word.join("");
@@ -91,14 +112,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         loopDeleting();
     }
-    
-    if(typingText) {
+
+    if (typingText) {
         typingEffect();
     }
 
     // 4. Scroll Reveal Animations (Intersection Observer)
     const fadeElements = document.querySelectorAll('.fade-up');
-    
+
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -123,10 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', async function (event) {
             event.preventDefault();
-            
+
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
-            
+
             submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
             submitBtn.disabled = true;
 
@@ -137,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     method: 'POST',
                     body: formData
                 });
-                
+
                 const data = await response.json();
 
                 if (data.success) {
@@ -154,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } finally {
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
-                
+
                 setTimeout(() => {
                     formStatus.textContent = '';
                 }, 5000);
@@ -171,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (modal && certImages.length > 0) {
         certImages.forEach(img => {
-            img.parentElement.addEventListener('click', function() {
+            img.parentElement.addEventListener('click', function () {
                 // To allow click on entire placeholder, find the img inside it
                 const image = this.querySelector('.cert-img');
                 if (image && image.getAttribute('src') && image.getAttribute('src') !== '') {
@@ -188,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'auto'; // Re-enable scroll
         };
 
-        if(closeBtn) {
+        if (closeBtn) {
             closeBtn.addEventListener('click', closeModal);
         }
 
