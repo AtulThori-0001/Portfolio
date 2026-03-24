@@ -36,6 +36,15 @@ body {
 }
 
 /* Background Effects */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
 .bg-shape {
     position: fixed;
     border-radius: 50%;
@@ -48,7 +57,7 @@ body {
 .shape-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
     top: -200px;
     left: -200px;
 }
@@ -56,15 +65,20 @@ body {
 .shape-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
     bottom: -100px;
     right: -100px;
     animation-direction: alternate-reverse;
 }
 
 @keyframes drift {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(50px, 50px) scale(1.1); }
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, 50px) scale(1.1);
+    }
 }
 
 /* Utilities */
@@ -92,7 +106,9 @@ body {
     box-shadow: var(--glass-shadow);
 }
 
-.w-full { width: 100%; }
+.w-full {
+    width: 100%;
+}
 
 /* Buttons */
 .btn {
@@ -199,11 +215,13 @@ body {
     transition: var(--transition);
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--text-main);
 }
 
-.nav-links a:hover::after, .nav-links a.active::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
     width: 100%;
 }
 
@@ -263,7 +281,11 @@ body {
     animation: blink 1s step-end infinite;
 }
 
-@keyframes blink { 50% { opacity: 0; } }
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
 
 .hero-desc {
     font-size: 1.1rem;
@@ -274,6 +296,7 @@ body {
 
 .hero-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 2.5rem;
 }
@@ -325,13 +348,20 @@ body {
     object-fit: cover;
     border: 4px solid var(--bg-surface);
     z-index: 2;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     background-color: var(--bg-surface-hover);
 }
 
 @keyframes pulseGlow {
-    0% { transform: scale(0.95); opacity: 0.4; }
-    100% { transform: scale(1.05); opacity: 0.7; }
+    0% {
+        transform: scale(0.95);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: scale(1.05);
+        opacity: 0.7;
+    }
 }
 
 /* Floating Tech Icons around Profile */
@@ -346,19 +376,45 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     animation: float 6s ease-in-out infinite;
     z-index: 3;
 }
 
-.tech-icon:nth-of-type(1) { top: 5%; left: 0; animation-delay: 0s; }
-.tech-icon:nth-of-type(2) { top: 15%; right: -10px; animation-delay: 1.5s; }
-.tech-icon:nth-of-type(3) { bottom: 15%; left: -10px; animation-delay: 3s; }
-.tech-icon:nth-of-type(4) { bottom: 5%; right: 10px; animation-delay: 4.5s; }
+.tech-icon:nth-of-type(1) {
+    top: 5%;
+    left: 0;
+    animation-delay: 0s;
+}
+
+.tech-icon:nth-of-type(2) {
+    top: 15%;
+    right: -10px;
+    animation-delay: 1.5s;
+}
+
+.tech-icon:nth-of-type(3) {
+    bottom: 15%;
+    left: -10px;
+    animation-delay: 3s;
+}
+
+.tech-icon:nth-of-type(4) {
+    bottom: 5%;
+    right: 10px;
+    animation-delay: 4.5s;
+}
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 /* Sections Common */
@@ -557,7 +613,7 @@ body {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     border-color: rgba(59, 130, 246, 0.4);
 }
 
@@ -629,7 +685,7 @@ body {
     display: block;
 }
 
-.cert-img[src]:not([src=""]) + .cert-overlay {
+.cert-img[src]:not([src=""])+.cert-overlay {
     display: none;
 }
 
@@ -736,10 +792,10 @@ body {
     background: rgba(0, 0, 0, 0.5);
 }
 
-.form-group input:focus ~ label,
-.form-group textarea:focus ~ label,
-.form-group input:not(:placeholder-shown) ~ label,
-.form-group textarea:not(:placeholder-shown) ~ label {
+.form-group input:focus~label,
+.form-group textarea:focus~label,
+.form-group input:not(:placeholder-shown)~label,
+.form-group textarea:not(:placeholder-shown)~label {
     top: -0.5rem;
     left: 0.8rem;
     font-size: 0.8rem;
@@ -800,22 +856,35 @@ footer p {
     transform: translateY(0);
 }
 
-.delay-1 { transition-delay: 0.2s; }
-.delay-2 { transition-delay: 0.4s; }
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.delay-2 {
+    transition-delay: 0.4s;
+}
 
 /* Responsive */
 @media (max-width: 968px) {
-    .hero-container, .about-grid, .contact-wrapper {
+
+    .hero-container,
+    .about-grid,
+    .contact-wrapper {
         grid-template-columns: 1fr;
     }
+
     .hero-content {
         text-align: center;
     }
-    .hero-actions, .social-links, .hero-desc {
+
+    .hero-actions,
+    .social-links,
+    .hero-desc {
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
     }
+
     .tech-stack-card {
         max-width: 400px;
         margin: 0 auto;
@@ -836,15 +905,19 @@ footer p {
         gap: 3rem;
         transition: 0.4s ease;
     }
+
     .nav-links.active {
         left: 0;
     }
+
     .nav-links a {
         font-size: 1.5rem;
     }
+
     .menu-btn {
         display: block;
     }
+
     .hero-title {
         font-size: 2.5rem;
     }
@@ -854,9 +927,11 @@ footer p {
 .cert-image-placeholder {
     cursor: pointer;
 }
+
 .cert-img {
     transition: transform 0.3s ease;
 }
+
 .cert-image-placeholder:hover .cert-img {
     transform: scale(1.05);
 }
@@ -886,7 +961,7 @@ footer p {
     max-width: 90%;
     max-height: 80vh;
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     object-fit: contain;
 }
 
@@ -919,6 +994,13 @@ footer p {
 }
 
 @keyframes zoomIn {
-    from {transform: scale(0.9); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
